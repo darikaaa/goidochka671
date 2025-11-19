@@ -55,11 +55,17 @@ int main() {
     string source_path = "C:\\programming\\text2.txt";
     ifstream file;
     file.open(source_path);
+    try {
     if (!file.is_open()) {
-        cout << "File does not exist" << endl;
-        return -1;
+        throw string("file is not open");
     }
-
+    }
+    catch (string error){
+    if (error == "file is not open"){
+            cout << "file is not open" << endl;
+            return -6;
+        }
+    }
     vector<Date> dates;
     string line;
 
@@ -93,6 +99,7 @@ int main() {
             cout << "invalid year" << endl;
             return -5;
         }
+
     }
 
 
